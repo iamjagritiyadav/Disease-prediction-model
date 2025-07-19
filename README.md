@@ -12,7 +12,7 @@ This project presents a machine learning pipeline to predict the **severity leve
 * **Target Feature**: `Level` (severity level of cancer condition)
 * **Input Features**: Multiple clinical indicators and patient attributes (e.g., age, gender, medical test results — exact list based on dataset)
 * **Prediction Type**: Regression
-* **Data Shape**: Implicit from the dataset; parsed using `pandas`
+* **Data Shape**: Parsed using `pandas`
 
 ---
 
@@ -20,26 +20,25 @@ This project presents a machine learning pipeline to predict the **severity leve
 
 1. **Data Inspection**
 
-   * Displayed top rows using `.head()`
-   * Reviewed column types and null values using `.info()` and `.isnull().sum()`
-   * Summary statistics checked with `.describe()`
+   * Top rows viewed using `.head()`
+   * Data types and null values examined via `.info()` and `.isnull().sum()`
+   * Statistical summary generated with `.describe()`
 
 2. **Feature and Label Separation**
 
-   * Target variable (`y`): `Level`
-   * Features (`X`): All remaining columns after dropping `Level`
+   * `X`: All features except `Level`
+   * `y`: The target variable `Level`
 
 3. **Train-Test Split**
 
-   * Utilized `train_test_split` from `sklearn.model_selection`
-   * Split ratio: **80% training**, **20% testing**
-   * Random seed: `random_state=100` to ensure reproducibility
+   * Used `train_test_split` with an 80:20 ratio
+   * `random_state=100` for reproducibility
 
 ---
 
 ## 🧠 Model Training and Evaluation
 
-Two regression models were implemented and compared for predictive performance:
+Two regression models were trained and evaluated:
 
 ---
 
@@ -47,15 +46,14 @@ Two regression models were implemented and compared for predictive performance:
 
 * **Library**: `sklearn.linear_model.LinearRegression`
 * **Training**: `.fit(X_train, y_train)`
-* **Prediction**: `.predict(X_test)`
-* **Performance Metrics**:
+* **Evaluation Metrics**:
 
-  * **Training MSE**: Computed with `mean_squared_error(y_train, y_pred_train)`
-  * **Testing MSE**
-  * **Training R² Score**: `r2_score(y_train, y_pred_train)`
-  * \*\*Testing R² Score\`
+  * Training MSE: `0.046248`
+  * Training R² Score: `0.928517`
+  * Test MSE: `0.057383`
+  * Test R² Score: `0.921597`
 
-📉 *Linear Regression served as a baseline model and established the fundamental relationship between features and target.*
+📉 *Linear Regression served as a baseline model, providing insight into the linear relationship between features and the severity level.*
 
 ---
 
@@ -63,46 +61,44 @@ Two regression models were implemented and compared for predictive performance:
 
 * **Library**: `sklearn.ensemble.RandomForestRegressor`
 * **Training**: `.fit(X_train, y_train)`
-* **Prediction**: `.predict(X_test)`
-* **Performance Metrics**:
+* **Evaluation Metrics**:
 
-  * **Training MSE & R²**
-  * **Testing MSE & R²**
+  * Training MSE: `0.000001`
+  * Training R² Score: `0.999998`
+  * Test MSE: `0.000001`
+  * Test R² Score: `0.999999`
 
-✅ *The Random Forest model significantly improved test performance, capturing non-linear interactions between variables.*
+✅ *The Random Forest model dramatically outperformed the linear model, capturing complex, non-linear feature interactions with near-perfect accuracy.*
 
 ---
 
 ## 📊 Metrics Summary
 
-| Model             | Train MSE | Train R² | Test MSE | Test R² |
-| ----------------- | --------- | -------- | -------- | ------- |
-| Linear Regression | (value)   | (value)  | (value)  | (value) |
-| Random Forest     | (value)   | (value)  | (value)  | (value) |
-
-> *(Insert actual values from your model results to complete the table.)*
+| Model             | Training MSE | Training R² | Test MSE | Test R²  |
+| ----------------- | ------------ | ----------- | -------- | -------- |
+| Linear Regression | 0.046248     | 0.928517    | 0.057383 | 0.921597 |
+| Random Forest     | 0.000001     | 0.999998    | 0.000001 | 0.999999 |
 
 ---
 
 ## 🧪 Tools and Libraries
 
 * **Data Manipulation**: `pandas`, `numpy`
-* **Modeling**: `scikit-learn` (LinearRegression, RandomForestRegressor, train\_test\_split, metrics)
-* **Environment**: Executed on **Google Colab** — ideal for interactive development, scalable cloud execution, and GPU support if extended
+* **Modeling**: `scikit-learn`
+* **Environment**: Google Colab
 
 ---
 
 ## 🔍 Key Insights and Learnings
 
-* Implemented a full machine learning workflow: **data exploration → preprocessing → model training → evaluation**
-* Understood the limitations of linear models on complex datasets
-* Gained experience in tuning and evaluating **regression models**
-* Learned to interpret **R²** and **MSE** to compare model accuracy and generalization
-* Built the foundation for more advanced ML applications in healthcare prediction tasks
+* Built a full machine learning pipeline from raw data to evaluation
+* Demonstrated the performance gap between linear and ensemble models
+* Learned how to quantify model quality using MSE and R²
+* Gained hands-on experience in using machine learning for healthcare-related prediction tasks
 
 ---
 
 ## 👩‍💻 Author
 
 **Jagriti Yadav**
-*Aspiring Data Scientist with a focus on machine learning applications in healthcare and predictive analytics.*
+*Aspiring Data Scientist focused on healthcare analytics and machine learning solutions.*
