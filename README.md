@@ -95,10 +95,3 @@ Two regression models were trained and evaluated:
 * Demonstrated the performance gap between linear and ensemble models
 * Learned how to quantify model quality using MSE and R²
 * Gained hands-on experience in using machine learning for healthcare-related prediction tasks
-
----
-
-## 👩‍💻 Author
-
-**Jagriti Yadav**
-*Aspiring Data Scientist focused on healthcare analytics and machine learning solutions.*
